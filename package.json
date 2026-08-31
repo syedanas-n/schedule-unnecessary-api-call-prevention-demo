@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@syncfusion/ej2-data": "^34.2.2",
+    "@syncfusion/ej2-react-schedule": "^34.2.4",
+    "@syncfusion/ej2-tailwind3-theme": "^34.2.5",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
