@@ -268,13 +268,14 @@ Content-Transfer-Encoding: binary `,batchChangeSetContentType:`Content-Type: app
       ✅ TEST 4: Data Refresh
 
       Action:
-      • CRUD
+      • CRUD (since it is remote data CRUD not allowed for safety concerns)
+      • You may check by manually changing the view to trigger a backend request.
 
       Expected:
-      • Data refresh from server
-      • Backend request is allowed
+      • Data refresh required.
+      • View change (start date & end date changed -> leads to fetch respective data from backend)
 
-    `)},children:`Test 4: Data Refresh (DO CRUD in the UI)`}),(0,ak.jsx)(`button`,{onClick:()=>{e.current?.setProperties({startHour:`07:00`}),e.current?.setProperties({endHour:`19:00`}),e.current?.setProperties({cssClass:`updated-schedule`}),r(`
+    `)},style:{opacity:.5},children:`Test 4: Data Refresh`}),(0,ak.jsx)(`button`,{onClick:()=>{e.current?.setProperties({startHour:`07:00`}),e.current?.setProperties({endHour:`19:00`}),e.current?.setProperties({cssClass:`updated-schedule`}),r(`
       ✅ TEST 5: Multiple Property Changes
 
       Properties Changed:
