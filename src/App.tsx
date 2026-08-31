@@ -11,6 +11,7 @@ import {
 } from '@syncfusion/ej2-react-schedule';
 import './App.css';
 import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { useState, useRef } from 'react';
 
 const roomData = [
   { Id: 1, Text: 'Room 1', Color: '#cb6bb2' },
@@ -35,11 +36,30 @@ const dataManager: DataManager = new DataManager({
 
 
 function App() {
+  const scheduleRef = useRef<ScheduleComponent | null>(null);
+  const currentColorField = useRef('Rooms');
+  const [colorSource, setColorSource] = useState('Rooms');
   return (
     <div style={{ padding: '20px' }}>
       <h2>Schedule Unnecessary API Call Prevention Demo</h2>
+      <button
+        onClick={() => {
+          currentColorField.current =
+            currentColorField.current === 'Rooms'
+              ? 'Owners'
+              : 'Rooms';
 
+          scheduleRef.current?.setProperties({
+            eventSettings: {
+              resourceColorField: currentColorField.current
+            }
+          });
+        }}
+      >
+      Toggle Resource Color Field
+      </button>
       <ScheduleComponent
+        ref={scheduleRef}
         height="650px"
         selectedDate={new Date(2026, 4, 10)}
         currentView="TimelineDay"
