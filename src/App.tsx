@@ -217,9 +217,9 @@ function App() {
       <div
         style={{
           background: '#f5f5f5',
-          padding: '20px',
+          padding: '10px',
           borderRadius: '10px',
-          marginBottom: '20px'
+          marginBottom: '10px'
         }}
       >
         <h3>Test Result</h3>
