@@ -110,11 +110,12 @@ function App() {
       ✅ TEST 4: Data Refresh
 
       Action:
-      • CRUD
+      • CRUD (since it is remote data CRUD not allowed for safety concerns)
+      • You may check by manually changing the view to trigger a backend request.
 
       Expected:
-      • Data refresh from server
-      • Backend request is allowed
+      • Data refresh required.
+      • View change (start date & end date changed -> leads to fetch respective data from backend)
 
     `);
   };
@@ -201,8 +202,8 @@ function App() {
           Test 3: Template Change
         </button>
 
-        <button onClick={runTestDataSourceChange}>
-          Test 4: Data Refresh (DO CRUD in the UI)
+        <button onClick={runTestDataSourceChange} style={{opacity: 0.5}}>
+          Test 4: Data Refresh
         </button>
 
         <button onClick={runTestDateRangeDedup}>
