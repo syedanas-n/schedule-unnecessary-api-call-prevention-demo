@@ -5,16 +5,34 @@ import {
   WorkWeek,
   Month,
   TimelineViews,
-  Inject
+  Inject,
+  ResourcesDirective,
+  ResourceDirective
 } from '@syncfusion/ej2-react-schedule';
 import './App.css';
 import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+
+const roomData = [
+  { Id: 1, Text: 'Room 1', Color: '#cb6bb2' },
+  { Id: 2, Text: 'Room 2', Color: '#56ca85' },
+  { Id: 3, Text: 'Room 3', Color: '#df5286' }
+];
+
+const ownerData = [
+  { Id: 1, RoomId: 1, Text: 'Owner 1', Color: '#ffaa00' },
+  { Id: 2, RoomId: 2, Text: 'Owner 2', Color: '#00aaff' },
+  { Id: 3, RoomId: 3, Text: 'Owner 3', Color: '#66cc66' },
+  { Id: 4, RoomId: 1, Text: 'Owner 4', Color: '#ff6666' },
+  { Id: 5, RoomId: 2, Text: 'Owner 5', Color: '#9966ff' },
+  { Id: 6, RoomId: 3, Text: 'Owner 6', Color: '#33cccc' }
+];
 
 const dataManager: DataManager = new DataManager({
   url: 'https://services.syncfusion.com/react/production/api/schedule',
   adaptor: new WebApiAdaptor(),
   crossDomain: true
 });
+
 
 function App() {
   return (
@@ -24,11 +42,36 @@ function App() {
       <ScheduleComponent
         height="650px"
         selectedDate={new Date(2026, 4, 10)}
-        currentView="Month"
+        currentView="TimelineDay"
+        group={{
+          resources: ['Rooms', 'Owners']
+        }}
         eventSettings={{
-          dataSource: dataManager
+          dataSource: dataManager,
+          resourceColorField: 'Rooms'
         }}
       >
+        <ResourcesDirective>
+          <ResourceDirective
+            field="RoomId"
+            title="Room"
+            name="Rooms"
+            dataSource={roomData}
+            textField="Text"
+            idField="Id"
+            colorField="Color"
+          />
+          <ResourceDirective
+            field="ResourceId"
+            title="Owner"
+            name="Owners"
+            dataSource={ownerData}
+            textField="Text"
+            idField="Id"
+            groupIDField="RoomId"
+            colorField="Color"
+          />
+        </ResourcesDirective>
         <Inject
           services={[
             Day,
